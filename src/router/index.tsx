@@ -6,10 +6,17 @@ import { Navigate } from 'react-router-dom';
 // webpack: 通过 import() 函数做分包
 // Vue/React: 路由的懒加载(路由)
 // 懒加载时, 有可能东西还没下载下来, 所以要用 Suspense 包裹
-const Discover = lazy(() => import('@/views/discover'));
-const Mine = lazy(() => import('@/views/mine'));
-const Download = lazy(() => import('@/views/download'));
-const Focus = lazy(() => import('@/views/focus'));
+const Discover = lazy(() => import('@/views/Discover'));
+const Mine = lazy(() => import('@/views/Mine'));
+const Download = lazy(() => import('@/views/Download'));
+const Focus = lazy(() => import('@/views/Focus'));
+
+const Album = lazy(() => import('@/views/Discover/c-views/Album'));
+const Artist = lazy(() => import('@/views/Discover/c-views/Artist'));
+const Djradio = lazy(() => import('@/views/Discover/c-views/Djradio'));
+const Ranking = lazy(() => import('@/views/Discover/c-views/Ranking'));
+const Recommend = lazy(() => import('@/views/Discover/c-views/Recommend'));
+const Songs = lazy(() => import('@/views/Discover/c-views/Songs'));
 
 const routes: RouteObject[] = [
   {
@@ -20,6 +27,36 @@ const routes: RouteObject[] = [
   {
     path: '/discover',
     element: <Discover />,
+    children: [
+      {
+        path: '/discover',
+        element: <Navigate to="/discover/recommend" />,
+      },
+      {
+        path: '/discover/album',
+        element: <Album />,
+      },
+      {
+        path: '/discover/artist',
+        element: <Artist />,
+      },
+      {
+        path: '/discover/djradio',
+        element: <Djradio />,
+      },
+      {
+        path: '/discover/ranking',
+        element: <Ranking />,
+      },
+      {
+        path: '/discover/recommend',
+        element: <Recommend />,
+      },
+      {
+        path: '/discover/songs',
+        element: <Songs />,
+      },
+    ],
   },
   {
     path: '/download',
