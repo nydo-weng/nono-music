@@ -1,5 +1,12 @@
-const Discover = () => {
-  return <div>discover</div>;
+import React, { memo } from 'react';
+import type { ReactNode, FC } from 'react';
+
+interface IProps {
+  children?: ReactNode;
+}
+
+const Discover: FC<IProps> = () => {
+  return <div>Discover</div>;
 };
 
-export default Discover;
+export default memo(Discover);
