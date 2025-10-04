@@ -1,7 +1,15 @@
-function App() {
-  const a: string = 'abc';
+import React from 'react';
+import { useRoutes } from 'react-router-dom';
+import routes from '@/router';
+import Download from './views/download';
 
-  return <div className="App">app</div>;
+function App() {
+  return (
+    <div className="App">
+      <Download name="nihao" age={19} />
+      <div className="main">{useRoutes(routes)}</div>
+    </div>
+  );
 }
 
 export default App;
